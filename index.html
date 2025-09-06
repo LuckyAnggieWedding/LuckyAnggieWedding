@@ -3,21 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Invitation</title>
+  <title>Lucky & Anggie Wedding</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
+
     img {
       width: 100%;
       height: auto;
       display: block;
     }
+
+    /* tombol musik */
+    #music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      transition: all 0.3s ease;
+    }
+
+    #music-btn:hover {
+      background: #f0f0f0;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Gambar Undangan -->
   <img src="wedding.jpg" alt="Wedding Invitation">
+
+  <!-- Musik -->
+  <audio id="bg-music" autoplay loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+    Browser tidak mendukung audio.
+  </audio>
+
+  <!-- Tombol musik -->
+  <button id="music-btn">🔊</button>
+
+  <script>
+    const music = document.getElementById("bg-music");
+    const btn = document.getElementById("music-btn");
+
+    let isPlaying = true;
+
+    btn.addEventListener("click", () => {
+      if (isPlaying) {
+        music.pause();
+        btn.textContent = "🔈";
+      } else {
+        music.play();
+        btn.textContent = "🔊";
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
 </body>
 </html>
