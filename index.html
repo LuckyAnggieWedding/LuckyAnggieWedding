@@ -3,78 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lucky & Anggie Wedding</title>
+  <title>Wedding Invitation</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      text-align: center;
+      background-color: #000;
     }
-
     img {
       width: 100%;
       height: auto;
       display: block;
     }
-
-    /* tombol musik */
-    #music-btn {
+    .music-btn {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+      background: #4CAF50;
+      color: white;
       border: none;
-      background: #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
       font-size: 20px;
-      transition: all 0.3s ease;
-    }
-
-    #music-btn:hover {
-      background: #f0f0f0;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     }
   </style>
 </head>
 <body>
-
-  <!-- Gambar Undangan -->
   <img src="wedding.jpg" alt="Wedding Invitation">
 
-  <!-- Musik -->
-  <audio id="bg-music" autoplay loop>
-    <source src="lagu.mp3" type="audio/mpeg">
-    Browser tidak mendukung audio.
-  </audio>
+  <!-- Tombol Play Musik -->
+  <button class="music-btn" onclick="toggleMusic()">▶</button>
 
-  <!-- Tombol musik -->
-  <button id="music-btn">🔊</button>
+  <!-- Musik -->
+  <audio id="bg-music" loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
   <script>
     const music = document.getElementById("bg-music");
-    const btn = document.getElementById("music-btn");
+    const btn = document.querySelector(".music-btn");
+    let isPlaying = false;
 
-    let isPlaying = true;
-
-    btn.addEventListener("click", () => {
+    function toggleMusic() {
       if (isPlaying) {
         music.pause();
-        btn.textContent = "🔈";
+        btn.textContent = "▶"; // Play
       } else {
         music.play();
-        btn.textContent = "🔊";
+        btn.textContent = "⏸"; // Pause
       }
       isPlaying = !isPlaying;
-    });
+    }
   </script>
 </body>
 </html>
